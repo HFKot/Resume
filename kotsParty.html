@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Park Brochure</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #3E5C76;
+      --accent: #ec716df8;
+      --background: #F8F4EC;
+      --button: #5C8374;
+      --button-hover: #47685e;
+      --text: #030303;
+    }
+
+    .character-inline {
+  height: 150px;
+  object-fit: contain;
+  display: block;
+  margin: 2rem auto 0 auto;
+}
+
+
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      font-family: 'Luckiest Guy', cursive;
+      position: relative;
+    }
+
+    /* 🔹 Static VHS noise overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif') repeat;
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .hero.custom-hero {
+      background-image: url('the_park.webp');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .hero.custom-hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(62, 92, 118, 0.6);
+      z-index: 1;
+    }
+
+    .hero .hero-body {
+      position: relative;
+      z-index: 2;
+    }
+
+    .mordecai-image {
+      position: absolute;
+      bottom: 0;
+      right: 5%;
+      height: 80%;
+      z-index: 2;
+      object-fit: contain;
+    }
+
+    .rigby-image {
+      position: absolute;
+      bottom: 0;
+      left: 5%;
+      height: 70%;
+      z-index: 2;
+      object-fit: contain;
+      transform: scaleX(-1);
+    }
+
+    .title,
+    .subtitle {
+      color: #be2885;
+    }
+
+    .has-text-accent {
+      color: var(--accent);
+    }
+
+    .button.is-primary {
+      background-color: var(--button);
+      color: white;
+      border: none;
+    }
+
+    .button.is-primary:hover {
+      background-color: var(--button-hover);
+    }
+
+    .box {
+      background-color: white;
+      border: 1px solid var(--accent);
+      color: var(--text);
+    }
+
+    .has-background-soft {
+      background-color: var(--accent);
+      color: #fff;
+    }
+
+    .footer {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 🔹 VHS Glitch Effect */
+    .glitch {
+      position: relative;
+      color: white;
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: glitch 1s infinite;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      opacity: 0.8;
+      clip: rect(0, 900px, 0, 0);
+    }
+
+    .glitch::before {
+      color: #f0f;
+      animation: glitchTop 1s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      color: #0ff;
+      animation: glitchBottom 1.5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes glitchTop {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      10% { clip: rect(0, 9999px, 20px, 0); transform: translate(-3px, -3px); }
+      20% { clip: rect(0, 9999px, 10px, 0); transform: translate(3px, -1px); }
+      30% { clip: rect(0, 9999px, 0, 0); transform: translate(-1px, 3px); }
+      100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      10% { clip: rect(0, 9999px, 20px, 0); transform: translate(3px, 3px); }
+      20% { clip: rect(0, 9999px, 10px, 0); transform: translate(-3px, 1px); }
+      30% { clip: rect(0, 9999px, 0, 0); transform: translate(1px, -3px); }
+      100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero custom-hero is-fullheight">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <img src="mordecai.png" alt="Mordecai" class="mordecai-image">
+        <img src="rigbi.png" alt="Rigby" class="rigby-image">
+        <h1 class="title is-size-1 glitch" data-text="Welcome to my Park">Welcome to my Park</h1>
+        <h2 class="subtitle is-size-3 has-text-accent">We love to chill</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="title has-text-centered mb-6 has-text-accent">What I Doooo</h2>
+      <div class="columns is-multiline">
+        <div class="column is-one-third">
+          <div class="box has-text-centered">
+            <h3 class="title is-4">Make Websites(sometimes)</h3>
+            <p>I'll pretend to make websites when I'm playing videoo games ooooooh</p>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="box has-text-centered">
+            <h3 class="title is-4">Time Travel</h3>
+            <p>By sleeping until 2 in the afternoon</p>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="box has-text-centered">
+            <h3 class="title is-4">Rock Out</h3>
+            <p>Epic clips and cinema done by me!</p>
+          </div>
+        </div>
+      </div>
+    
+
+    </div>
+  </section>
+  <img src="mussle.webp" alt="Muscle Man" class="character-float-left">
+
+  <section class="section has-background-soft">
+    <div class="container">
+      <h2 class="title has-text-centered">The Crew</h2>
+      <div class="content has-text-centered">
+        <p>Mordecai and Rigby, with the help of Pops, Benson, Skips, and Muscle Man, totally run the park (kinda). Just don't ask them to do actual work (It's mostly all me).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="title has-text-centered has-text-accent">Hit Us Up, Dudes</h2>
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <form>
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Your Name">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input class="input" type="email" placeholder="Your Email">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Message</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Your Message"></textarea>
+              </div>
+            </div>
+
+            <div class="field is-grouped is-justify-content-center">
+              <div class="control">
+                <button class="button is-primary">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <img src="hifive.webp" alt="Hi Five Ghost" class="character-inline">
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p><strong>The Park</strong> by Kot No no slacking. 🕶️</p>
+    </div>
+  </footer>
+
+</body>
+</html>
